@@ -29,6 +29,10 @@ app.post('/post', async (req, res) => {
   await Post.create(req.body)
   res.redirect('/')
 })
+app.get('/posts/:id', async (req, res) => {
+  const post = await Post.findById(req.params.id)
+  res.render('post', { post })
+})
 
 const port = 5000
 app.listen(port, () => console.log(`Listening on port ${port}`))
