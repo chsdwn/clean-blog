@@ -6,7 +6,7 @@ const pageController = require('./controllers/page')
 const postController = require('./controllers/post')
 
 mongoose
-  .connect(`mongodb+srv://${process.env.MONGODB_USER}:${process.env.MONGODB_PASS}@cluster0.6a4vv.mongodb.net/pcat-db?retryWrites=true&w=majority`)
+  .connect(`mongodb+srv://${process.env.MONGODB_USER}:${process.env.MONGODB_PASS}@cluster0.6a4vv.mongodb.net/clean-blog-db?retryWrites=true&w=majority`)
   .then(() => console.log('Connected to the MongoDB'))
   .catch((err) => console.error(err.message))
 
