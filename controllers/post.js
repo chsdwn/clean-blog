@@ -16,7 +16,6 @@ exports.create = async (req, res) => {
 }
 
 exports.update = async (req, res) => {
-  console.log(req.params.id, req.body)
   const id = req.params.id
   const post = await Post.findById(id)
   post.title = req.body.title

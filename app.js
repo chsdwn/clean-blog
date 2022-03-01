@@ -5,7 +5,10 @@ const mongoose = require('mongoose')
 const pageController = require('./controllers/page')
 const postController = require('./controllers/post')
 
-mongoose.connect('mongodb://localhost/cleanblog-test-db')
+mongoose
+  .connect(`mongodb+srv://${process.env.MONGODB_USER}:${process.env.MONGODB_PASS}@cluster0.6a4vv.mongodb.net/pcat-db?retryWrites=true&w=majority`)
+  .then(() => console.log('Connected to the MongoDB'))
+  .catch((err) => console.error(err.message))
 
 const app = express()
 
@@ -26,5 +29,5 @@ app.get('/about', pageController.getAboutPage)
 app.get('/add', pageController.getAddPostPage)
 app.get('/post/edit/:id', pageController.getEditPostPage)
 
-const port = 5000
+const port = process.env.PORT || 5000
 app.listen(port, () => console.log(`Listening on port ${port}`))
